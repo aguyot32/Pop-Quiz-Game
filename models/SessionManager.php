@@ -19,16 +19,22 @@ class SessionManager {
         $expiresAt = date('Y-m-d H:i:s', time() + $expiresInSeconds);
         $gameDataJson = json_encode($gameData);
         
-        $sql = "REPLACE INTO game_sessions 
-                (session_id, game_data, updated_at, expires_at) 
-                VALUES (?, ?, NOW(), ?)";
+        $check = $this->db->query("SELECT COUNT(*) as count FROM game_sessions WHERE session_id = ?", [$sessionId]);
+        $exists = $check && $check->fetch()['count'] > 0;
         
-        return $this->db->execute($sql, [$sessionId, $gameDataJson, $expiresAt]);
+        if ($exists) {
+            $sql = "UPDATE game_sessions SET game_data = ?, updated_at = NOW(), expires_at = ? WHERE session_id = ?";
+            return $this->db->execute($sql, [$gameDataJson, $expiresAt, $sessionId]);
+        } else {
+            $sql = "INSERT INTO game_sessions (session_id, game_data, updated_at, expires_at) VALUES (?, ?, NOW(), ?)";
+            return $this->db->execute($sql, [$sessionId, $gameDataJson, $expiresAt]);
+        }
     }
     
     public function getSession($sessionId) {
         $sql = "SELECT game_data, expires_at FROM game_sessions 
-                WHERE session_id = ? AND expires_at > NOW()";
+                WHERE session_id = ? AND expires_at > NOW() 
+                ORDER BY updated_at DESC LIMIT 1";
         
         $stmt = $this->db->query($sql, [$sessionId]);
         $result = $stmt ? $stmt->fetch() : null;

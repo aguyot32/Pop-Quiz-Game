@@ -2,6 +2,10 @@
 
 Un jeu de quiz interactif et chronométré basé sur la reconnaissance d'images (films, séries, jeux vidéo, animes, etc.). Le projet inclut un système de score dynamique, un classement global, et une contribution de la communauté  (propositions et signalements de questions).
 
+## Accès
+
+* **Maintenant disponible ici** : https://aguyot32.alwaysdata.net/pop-game-quiz/index.php
+
 ## Fonctionnalités
 
 * **Quiz chronométré** : Des parties de 5 à 100 questions avec un temps limite par question.

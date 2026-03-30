@@ -17,8 +17,9 @@ let gameState = {
 
 async function apiCall(action, method = 'GET', data = null) {
     let url = `api/game-api.php?action=${action}`;
-    
+
     if (method === 'GET' && gameState.sessionId) {
+        url += '&_t=' + Date.now();
         url += '&session_id=' + encodeURIComponent(gameState.sessionId);
     }
     
