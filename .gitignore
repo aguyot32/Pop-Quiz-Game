@@ -1,0 +1,12 @@
+# Ignorer le dossier d'administration entier
+/admin/
+
+# Ignorer le fichier contenant les mots de passe de la base de données
+config/database.php
+
+# Ignorer les exports et scripts de base de données MySQL
+*.sql
+
+# Ignorer les présentations PowerPoint
+*.ppt
+*.pptx
