@@ -70,6 +70,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .back-link { display: inline-block; margin-top: 20px; color: var(--primary-color); text-decoration: none; font-weight: 600; }
         .preview-box { background: var(--bg-dark); padding: 20px; border-radius: 8px; margin-top: 10px; display: none; }
         .preview-image { max-width: 100%; max-height: 300px; border-radius: 8px; display: block; margin: 10px auto; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color); }
+        .form-select, .form-input { 
+            width: 100%; 
+            padding: 12px 16px; 
+            background: var(--bg-lighter); 
+            border: 2px solid transparent; 
+            border-radius: 8px; 
+            color: var(--text-color); 
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .form-select:focus, .form-input:focus { 
+            outline: none; 
+            border-color: var(--primary-color); 
+        }
+        .form-hint { 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            margin-top: 5px; 
+            display: block; 
+        }
+        body {
+            height: auto;
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body>
