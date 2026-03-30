@@ -10,3 +10,6 @@ config/database.php
 # Ignorer les présentations PowerPoint
 *.ppt
 *.pptx
+
+#Ignorer le dossier des anciens fichiers
+/ancien fichier/
